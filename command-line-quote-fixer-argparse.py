@@ -1,4 +1,5 @@
-#! /usr/bin/env python3
+import argparse
+import sys
 
 fixed_string_list = []
 problem_pointer_list = []
@@ -10,11 +11,20 @@ magical_character_conversion_dict = {
     "’": "\'"
 }
 
-def judge_your_string(string_list, character_dict): # Lo, misleading function name now - takes a list!
-    # Also easier to test if the dictionary is passed in too, rather than being referred to as a global variable
-    for char in string_list:
-        # if magical_character_conversion_dict.get(char) != None:
-        if char in character_dict.keys():
+# Get arguments, if any, from the command line
+# command_line_string = sys.argv[1]
+
+# Adding command line help/utility
+parser = argparse.ArgumentParser(description='Finds curly quotes and replaces them with straight quotes.')
+parser.add_argument('string', metavar='S', type=str, nargs='+', help='the string to be examined and fixed')
+
+args = parser.parse_args()
+print(args.accumulate(args.string))
+
+def judge_your_string(string_list):
+    string_judgment = None
+    for char in string_to_list:
+        if char in magical_character_conversion_dict.keys():
             return True
         else:
             pass
@@ -31,6 +41,8 @@ def fix_your_string(string_list):
             problem_pointer_list.append(" ")
 
 if __name__ == "__main__":
+    # if command_line_string:
+    #     print(command_line_string)
     string_input = input("Paste your questionable string here: ")
     string_to_list = list(string_input)
 
