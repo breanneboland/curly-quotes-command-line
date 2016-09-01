@@ -10,20 +10,18 @@ magical_character_conversion_dict = {
     "’": "\'"
 }
 
-def judge_your_string(string_list, character_dict): # Lo, misleading function name now - takes a list!
-    # Also easier to test if the dictionary is passed in too, rather than being referred to as a global variable
+def judge_your_string_list(string_list, character_dict):
     for char in string_list:
-        # if magical_character_conversion_dict.get(char) != None:
-        if char in character_dict.keys():
+        if character_dict.get(char) != None:
             return True
         else:
             pass
-    return False
+        return False
 
-def fix_your_string(string_list):
+def replace_problematic_characters(string_list, character_dict):
     for char in string_list:
-        if char in magical_character_conversion_dict.keys():
-            swap_char = magical_character_conversion_dict[char]
+        if character_dict.get(char) != None:
+            swap_char = character_dict[char]
             fixed_string_list.append(swap_char)
             problem_pointer_list.append("^")
         else:
@@ -36,8 +34,8 @@ if __name__ == "__main__":
 
     if not string_input:
         print("No ideas? Run this again and try this: “Riddled with smartquotes, this.”")
-    elif judge_your_string(string_input) == True:
-        fix_your_string(string_to_list)
+    elif judge_your_string_list(string_input, magical_character_conversion_dict) == True:
+        replace_problematic_characters(string_to_list, magical_character_conversion_dict)
         print("ftfy:", "".join(fixed_string_list))
         print("     ", "".join(problem_pointer_list))
     else:
