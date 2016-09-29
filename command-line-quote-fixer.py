@@ -3,7 +3,7 @@
 fixed_string_list = []
 problem_pointer_list = []
 
-magical_character_conversion_dict = {
+character_conversion_dict = {
     "“": "\"",
     "”": "\"",
     "‘": "\'",
@@ -28,15 +28,19 @@ def replace_problematic_characters(string_list, character_dict):
             fixed_string_list.append(char)
             problem_pointer_list.append(" ")
 
-if __name__ == "__main__":
+def fix_string_and_make_terminal_output():
     string_input = input("Paste your questionable string here: ")
     string_to_list = list(string_input)
 
     if not string_input:
         print("No ideas? Run this again and try this: “Riddled with smartquotes, this.”")
-    elif judge_your_string_list(string_input, magical_character_conversion_dict) == True:
-        replace_problematic_characters(string_to_list, magical_character_conversion_dict)
+    elif judge_your_string_list(string_input,
+      character_conversion_dict) == True:
+        replace_problematic_characters(string_to_list, character_conversion_dict)
         print("ftfy:", "".join(fixed_string_list))
         print("     ", "".join(problem_pointer_list))
     else:
         print("Looks great. Smooth sailing.")
+
+if __name__ == "__main__":
+    fix_string_and_make_terminal_output()
