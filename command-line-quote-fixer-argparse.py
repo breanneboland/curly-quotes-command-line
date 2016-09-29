@@ -1,24 +1,6 @@
 #! /usr/bin/env python3
 import argparse
 
-# Adding command line help/utility
-parser = argparse.ArgumentParser(description=
-    'Finds curly quotes and replaces them with straight quotes.')
-parser.add_argument('words', metavar='string', type=str, nargs='+',
-    help='the string to be examined and fixed')
-
-# Just turning the Namespace object into the string it once was
-args = parser.parse_args()
-input_list = args.words
-string_input = " ".join(input_list)
-
-# Changes string_input into lovely mutable list
-string_to_list = list(string_input)
-
-# Empty lists to concatenate into terminal output strings later
-fixed_string_list = []
-problem_pointer_list = []
-
 magical_character_conversion_dict = {
     "“": "\"",
     "”": "\"",
@@ -57,4 +39,21 @@ def fix_string_and_make_terminal_output():
         print("Looks great. Smooth sailing.")
 
 if __name__ == "__main__":
+    # Adding command line help/utility
+    parser = argparse.ArgumentParser(description=
+        'Finds curly quotes and replaces them with straight quotes.')
+    parser.add_argument('words', metavar='string', type=str, nargs='+',
+        help='the string to be examined and fixed')
+
+    # Just turning the Namespace object into the string it once was
+    args = parser.parse_args()
+    input_list = args.words
+    string_input = " ".join(input_list)
+
+    # Changes string_input into lovely mutable list
+    string_to_list = list(string_input)
+
+    # Empty lists to concatenate into terminal output strings later
+    fixed_string_list = []
+    problem_pointer_list = []
     fix_string_and_make_terminal_output()
