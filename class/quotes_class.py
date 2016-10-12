@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-class QuoteFixing:
+class QuoteFixer:
     """In which we fix strings that might contain curly quotes"""
 
     def __init__(self, string):
@@ -31,5 +31,7 @@ class QuoteFixing:
             else:
                 fixed_string_list.append(char)
                 problem_pointer_list.append(" ")
+        fixed_string = "".join(fixed_string_list)
+        problem_pointers = "".join(problem_pointer_list)
 
-        return (fixed_string_list, problem_pointer_list)
+        return (fixed_string, problem_pointers)

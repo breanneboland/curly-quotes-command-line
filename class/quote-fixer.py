@@ -4,7 +4,7 @@ import quotes_class
 string_input = input("Paste your questionable string here: ")
 string_to_list = list(string_input)
 
-quote_fixer = quotes_class.QuoteFixing(string_to_list)
+quote_fixer = quotes_class.QuoteFixer(string_to_list)
 
 def fix_string_and_make_terminal_output():
     listed_string_to_fix = quote_fixer.input
@@ -13,9 +13,9 @@ def fix_string_and_make_terminal_output():
     if not listed_string_to_fix:
         print("No ideas? Run this again and try this: “Riddled with smartquotes, this.”")
     elif quote_fixer.judge_your_string_list(listed_string_to_fix, char_conversion_dict) == True:
-      fixed_string_list, problem_pointer_list = quote_fixer.replace_problematic_characters(listed_string_to_fix, char_conversion_dict)
-      print("ftfy:", "".join(fixed_string_list))
-      print("     ", "".join(problem_pointer_list))
+      fixed_string, problem_pointers = quote_fixer.replace_problematic_characters(listed_string_to_fix, char_conversion_dict)
+      print("ftfy:", fixed_string)
+      print("     ", problem_pointers)
     else:
         print("Looks great. Smooth sailing.")
 
