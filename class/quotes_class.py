@@ -10,7 +10,7 @@ class QuoteFixer:
             "”": "\"",
             "‘": "\'",
             "’": "\'"
-        }
+        } # This can be taken out of init - and then only used within the methods.
 
     def judge_your_string_list(self, string_list, character_dict):
         for char in string_list:
