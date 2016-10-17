@@ -2,30 +2,34 @@
 
 class QuoteFixer:
     """In which we fix strings that might contain curly quotes"""
+    CHARACTER_CONVERSION_DICT = {
+        "“": "\"",
+        "”": "\"",
+        "‘": "\'",
+        "’": "\'"
+    }
 
     def __init__(self, string):
-        self.input = string
-        self.CHARACTER_CONVERSION_DICT = {
-            "“": "\"",
-            "”": "\"",
-            "‘": "\'",
-            "’": "\'"
-        } # This can be taken out of init - and then only used within the methods.
+        self.input = list(string)
 
-    def judge_your_string_list(self, string_list, character_dict):
+    def test_for_string_input(self):
+        if not self.input:
+            print("No ideas? Run this again and try this: “Riddled with smartquotes, this.”")
+
+    def judge_your_string_list(self, string_list):
         for char in string_list:
-            if character_dict.get(char) != None:
+            if self.CHARACTER_CONVERSION_DICT.get(char) != None:
                 return True
             else:
                 pass
             return False
 
-    def replace_problematic_characters(self, string_list, character_dict):
+    def replace_curly_quotes(self, string_list):
         fixed_string_list = []
         problem_pointer_list = []
         for char in string_list:
-            if character_dict.get(char) != None:
-                swap_char = character_dict[char]
+            if self.CHARACTER_CONVERSION_DICT.get(char) != None:
+                swap_char = self.CHARACTER_CONVERSION_DICT[char]
                 fixed_string_list.append(swap_char)
                 problem_pointer_list.append("^")
             else:
